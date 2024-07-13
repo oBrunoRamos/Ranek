@@ -1,0 +1,47 @@
+{
+       "user":[
+              {
+                     "id":"andre@origamid.com",
+                     "name":"André Rafael",
+                     "email":"andre@origamid.com",
+                     "password":"123",
+                     "address":{
+                            "street":"Rua Ali Perto",
+                            "zip-code":"12345678",
+                            "number":"25",
+                            "state":"RJ",
+                            "city":"Rio de Janeiro"
+                     }
+
+              }
+       ],
+       "product":[
+              {
+                     "id": "notebook",
+                     "name": "Notebook",
+                     "user-id": "andre@origamid.com",
+                     "price": "4999",
+                     "sold": "false",
+                     "description": "Esse é um novo notebook",
+                     "pictures": []
+              },
+              {
+                     "id": "smartphone",
+                     "name": "Smartphone",
+                     "user-id": "andre@origamid.com",
+                     "price": "1999",
+                     "sold": "false",
+                     "description": "Esse é um novo smartphone",
+                     "pictures": []
+              },
+              {
+                     "id": "tablet",
+                     "name": "Tablet",
+                     "user-id": "andre@origamid.com",
+                     "price": "2999",
+                     "sold": "false",
+                     "description": "Esse é um novo tablet",
+                     "pictures": []
+              }
+       ]
+}
