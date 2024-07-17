@@ -2,7 +2,7 @@
   <div id="app">
     <TheHeader />
     <main id="main">
-           <router-view />
+      <router-view />
     </main>
     <TheFooter />
   </div>
@@ -68,12 +68,12 @@ img {
   background: #65d;
   transform: scale(1.1);
 }
-#app{
-       display: flex;
-       min-height: 100vh;
-       flex-direction: column;
+#app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-#main{
-       flex: 1;
+#main {
+  flex: 1;
 }
 </style>
