@@ -1,20 +1,20 @@
 <template>
   <section>
     <h1>👍Compre ou Venda👎</h1>
-    <ProductsSearch />
-    <ProductsList />
+    <ProdutosBuscar />
+    <ProdutosLista />
   </section>
 </template>
 
 <script>
-import ProductsSearch from "@/components/ProductSearch.vue";
-import ProductsList from "@/components/ProductList.vue";
+import ProdutosBuscar from "@/components/ProdutosBuscar.vue";
+import ProdutosLista from "@/components/ProdutosLista.vue";
 
 export default {
   name: "HomeView",
   components: {
-    ProductsSearch,
-    ProductsList,
+    ProdutosBuscar,
+    ProdutosLista,
   },
 };
 </script>
