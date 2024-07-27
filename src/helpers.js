@@ -1,7 +1,23 @@
 export function serialize(obj){
   let queryString =""
-  for (let key in this.$route.query) {
-    queryString += `&${key}=${this.$route.query[key]}`;
+  for (let key in obj) {
+    queryString += `&${key}=${obj[key]}`;
   }
   return "/produto?_limit=10" + queryString;
+}
+
+export function mapFields(options) {
+  const object = {};
+  for (let x = 0; x < options.fields.length; x++) {
+    const field = [options.fields[x]];
+    object[field] = {
+      get() {
+        return this.$store.state[options.base][field];
+      },
+      set(value) {
+        this.$store.commit(options.mutation, { [field]: value });
+      }
+    };
+  }
+  return object;
 }

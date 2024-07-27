@@ -5,7 +5,19 @@ import store from "./store";
 import PaginaCarregando from "./components/PaginaCarregando.vue";
 
 Vue.config.productionTip = false;
-Vue.component("PaginaCarrgando", PaginaCarregando)
+Vue.component("PaginaCarrgando", PaginaCarregando);
+
+Vue.filter("numeroPreco", (valor) => {
+  valor = Number(valor);
+  if(!isNaN(valor)){
+    return valor.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
+  }else{
+    return "";
+  }
+});
 
 new Vue({
   router,

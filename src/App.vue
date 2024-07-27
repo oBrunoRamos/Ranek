@@ -2,7 +2,9 @@
   <div id="app">
     <TheHeader />
     <main id="main">
-      <router-view />
+      <transition mode="out-in">
+        <router-view />
+      </transition>
     </main>
     <TheFooter />
   </div>
@@ -50,6 +52,24 @@ img {
   max-width: 100%;
   display: block;
 }
+input, textarea{
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, .1);
+  transition: all .3s;
+  font-size: 1rem ;
+  font-family: 'Avenir LT Std',Arial, Helvetica, sans-serif;
+  margin-bottom: 15px;
+}
+input:hover, textarea:hover, input:focus, textarea:focus{
+outline: none;
+box-shadow: 0 6px 12px rgba(30, 60, 90, .12);
+border-color: #87f;
+}
+label{
+  margin-bottom: 5px;
+}
 .btn {
   display: block;
   padding: 10px 30px;
@@ -75,21 +95,6 @@ img {
 }
 #main {
   flex: 1;
-}
-input, textarea{
-  border-radius: 4px;
-  border: 1px solid white;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(30, 60, 90, .1);
-  transition: all .3s;
-  font-size: 1rem ;
-  font-family: 'Avenir LT Std',Arial, Helvetica, sans-serif;
-  margin-bottom: 15px;
-}
-input:hover, textarea:hover, input:focus, textarea:focus{
-outline: none;
-box-shadow: 0 6px 12px rgba(30, 60, 90, .12);
-border-color: #87f;
 }
 .v-enter,
 .v-leave-to{

@@ -7,13 +7,13 @@
         key="produtos"
       >
         <div v-for="produto in produtos" :key="produto.id" class="produto">
-          <router-link to="/">
+          <router-link :to="{ name: 'produto', params: { id: produto.id } }">
             <img
               v-if="produto.fotos"
               :src="produto.fotos[0].src"
               :alt="produto.fotos[0].title"
             />
-            <p class="preco">{{ produto.preco }}</p>
+            <p class="preco">{{ produto.preco | numeroPreco }}</p>
             <h2 class="titulo">{{ produto.nome }}</h2>
             <p>{{ produto.descricao }}</p>
           </router-link>
@@ -30,9 +30,7 @@
       >
         <p>Busca sem resultados. Tente buscar outro termo</p>
       </div>
-      <div v-else key="pagina-carregando">
-        <PagnaCarregando />
-      </div>
+      <PagnaCarregando v-else key="pagina-carregando" />
     </transition>
   </section>
 </template>
@@ -103,7 +101,6 @@ export default {
   border-radius: 4px;
   transition: all 0.2s;
 }
-
 .produto:hover {
   box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
   transform: scale(1.1);
