@@ -13,7 +13,14 @@
             {{ venda.comprador_id }}
           </p>
         </ProdutoItem>
-        
+        <div class="entre">
+          <h3>Entrega:</h3>
+          <ul v-if="venda.endereco">
+            <li v-for="(value, key) in venda.endereco" :key="key">
+              {{ key }}: {{ value }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -66,5 +73,14 @@ export default {
 }
 h2 {
   margin-bottom: 20px;
+}
+.entrega{
+  display: grid;
+  grid-template-columns: minmax(100px, 200px) 1fr;
+  grid-gap: 20px;
+  margin-bottom: 60px;
+}
+.entrega h3{
+  justify-self: end;
 }
 </style>
