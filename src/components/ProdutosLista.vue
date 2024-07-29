@@ -6,7 +6,7 @@
         class="produtos"
         key="produtos"
       >
-        <div v-for="produto in produtos" :key="produto.id" class="produto">
+        <div v-for="(produto, index) in produtos" :key="index" class="produto">
           <router-link :to="{ name: 'produto', params: { id: produto.id } }">
             <img
               v-if="produto.fotos"
@@ -61,15 +61,11 @@ export default {
   methods: {
     getProdutos() {
       this.produtos = null;
-      api.get("produto").then((response) => {
-        this.produtosTotal = Number(response.headers["x-total-count"]);
+      api.get(this.url).then((response) => {
         this.produtos = response.data;
-        console.log(response.data);
+        console.log( response  );
+        this.produtosTotal = response.headers["x-total-count"]  
       });
-      // api.get(this.url).then((response) => {
-      //   this.produtos = response.data;
-      //   console.log(response.data);
-      // });
     },
   },
   watch: {

@@ -10,7 +10,13 @@ export const api = {
   },
   post(endpoint, body){
     axiosInstance.post(endpoint, body);
-  }
+  },
+  delete(endpoint){
+    return axiosInstance.delete(endpoint);
+  },
+  put(endpoint, body){
+    axiosInstance.put(endpoint, body);
+  },
 }
 export function getCep(cep){
   return axios.get(`https://viacep.com.br/ws/${cep}/json/`)

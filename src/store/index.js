@@ -7,8 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: true,
   state: {
-    login: true,
-    // login: false,
+    // login: true,
+    login: false,
     usuario: {
       id: "",
       nome: "",
@@ -40,8 +40,8 @@ export default new Vuex.Store({
   },
   actions: {
     getUsuarioProdutos(context) {
-      // .get(`/produto?usuario_id=${context.state.usuario.id}`)
-      api.get(`/produto`)
+      api.get(`/produto?usuario_id=${context.state.usuario.id}`)
+      // api.get(`/produto`)
         .then((response) => {
           context.commit("UPDATE_USUARIO_PRODUTOS", response.data);
         });

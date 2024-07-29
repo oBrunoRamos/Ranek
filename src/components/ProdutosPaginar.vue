@@ -1,15 +1,14 @@
 <template>
-  <ul v-if="paginasTotal > 1">
+  <ul v-if="paginasTotal >= 1 ">
     <li v-for="pagina in paginas" :key="pagina">
       <router-link :to="{ query: { _page: query(pagina) } }">{{
         pagina
       }}</router-link>
     </li>
   </ul>
+  <p v-else>rgreg oi</p>
 </template>
-
 <script>
-
 export default {
   name: "ProdutosPaginar",
   props: {
@@ -20,6 +19,14 @@ export default {
     produtosPorPagina: {
       type: Number,
       dafault: 1,
+    },
+  },
+  methods: {
+    query(pagina) {
+      return {
+        ...this.$route.query,
+        _page: pagina,
+      };
     },
   },
   computed: {
@@ -42,14 +49,7 @@ export default {
       return total !== Infinity ? Math.ceil(total) : 0;
     },
   },
-  methods: {
-    query(pagina) {
-      return {
-        ...this.$route.query,
-        _page: pagina,
-      };
-    },
-  },
+  
 };
 </script>
 
