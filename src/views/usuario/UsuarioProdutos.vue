@@ -3,21 +3,26 @@
     <h2>Adicionar Produto</h2>
     <ProdutoAdicionar />
     <h2>Seus Produtos</h2>
-    <transition-group>
-    
+    <transition-group v-if="usuario_produtos" name="list" tag="ul">
+      <li v-for="produto in usuario_produtos" :key="produto.id">
+        <ProdutoItem :produto="produto">
+          <p>{{ produto.descricao }}</p>
+        </ProdutoItem>
+      </li>
     </transition-group>
-    {{ usuario_produtos }}
   </section>
 </template>
 
 <script>
 import ProdutoAdicionar from "@/components/ProdutoAdicionar.vue";
+import ProdutoItem from "@/components/ProdutoItem.vue";
 import { mapState, mapActions } from "vuex";
 
 export default {
   name: "UsuarioProdutos",
   components: {
     ProdutoAdicionar,
+    ProdutoItem
   },
   computed: {
     ...mapState(["login", "usuario", "usuario_produtos"]),
@@ -25,17 +30,21 @@ export default {
   methods: {
     ...mapActions(["getUsuarioProdutos"]),
   },
-  // watch:{
-  //   login(){
-  //     this.getUsuarioProdutos();
-  //   }
-  // },
-  // created() {
-  //   if(this.login){
-  //     this.getUsuarioProdutos();
-  //   }
-  // },
+  watch:{
+    login(){
+      this.getUsuarioProdutos();
+    }
+  },
+  created() {
+    if(this.login){
+      this.getUsuarioProdutos();
+    }
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+  h2{
+    margin-bottom: 20px;
+  }
+</style>
