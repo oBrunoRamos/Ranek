@@ -1,12 +1,11 @@
 <template>
-  <ul v-if="paginasTotal >= 1 ">
+  <ul v-if="paginasTotal >= 0 ">
     <li v-for="pagina in paginas" :key="pagina">
       <router-link :to="{ query: { _page: query(pagina) } }">{{
         pagina
       }}</router-link>
     </li>
   </ul>
-  <p v-else>rgreg oi</p>
 </template>
 <script>
 export default {
@@ -18,7 +17,7 @@ export default {
     },
     produtosPorPagina: {
       type: Number,
-      dafault: 1,
+      dafault: 9,
     },
   },
   methods: {

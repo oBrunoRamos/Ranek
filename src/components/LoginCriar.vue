@@ -31,11 +31,10 @@ export default {
     async criarUsuario() {
       try {
         await this.$store.dispatch("criarUsuario", this.$store.state.usuario);
-        await this.$store.dispatch(
-          "getUsuario",
-          this.$store.state.usuario.email
-        );
-        this.$router.push({ name: "usuario" });
+        this.$store.dispatch("logarUsuario", this.login).then(() => {
+          this.$store.dispatch("getUsuario");
+          this.$router.push({ name: "usuario" });
+        });
       } catch (error) {
         console.log(error);
       }

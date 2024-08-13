@@ -13,7 +13,6 @@
         <transition  v-if="produto.vendido === 'false'" mode="out-in">
           <button class="btn" v-if="!finalizar" @click="finalizar = true">Comprar</button>
           <FinalizarCompra v-else :produto="produto"/>
-          
         </transition>
         <button v-else class="btn" disabled></button>
       </div>

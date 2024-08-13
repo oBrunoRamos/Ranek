@@ -30,7 +30,7 @@
       >
         <p>Busca sem resultados. Tente buscar outro termo</p>
       </div>
-      <PagnaCarregando v-else key="pagina-carregando" />
+      <PaginaCarregando v-else key="pagina-carregando" />
     </transition>
   </section>
 </template>
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       produtos: null,
-      pordutosPorPagina: 9,
+      produtosPorPagina: 9,
       produtosTotal: 0,
     };
   },
@@ -63,8 +63,7 @@ export default {
       this.produtos = null;
       api.get(this.url).then((response) => {
         this.produtos = response.data;
-        console.log( response  );
-        this.produtosTotal = response.headers["x-total-count"]  
+        this.produtosTotal = Number(response.headers["x-total-count"]); 
       });
     },
   },

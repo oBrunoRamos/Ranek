@@ -36,7 +36,10 @@ export default {
     deletarProduto(id) {
       const confirmar = window.confirm("Deseja remover este produto?");
       if (confirmar) {
-        api.delete(`/produto/${id}`).then(()=> this.getUsuarioProdutos()).catch( error => console.log(error));
+        api
+          .delete(`/produto/${id}`)
+          .then(() => this.getUsuarioProdutos())
+          .catch((error) => console.log(error));
       }
     },
   },
@@ -66,7 +69,7 @@ h2 {
 .list-leave-active {
   transition: all 0.3s;
 }
-.deletar{
+.deletar {
   position: absolute;
   top: 0px;
   right: 0px;

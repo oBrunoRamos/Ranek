@@ -13,7 +13,7 @@
             {{ venda.comprador_id }}
           </p>
         </ProdutoItem>
-        <div class="entre">
+        <div class="entrega">
           <h3>Entrega:</h3>
           <ul v-if="venda.endereco">
             <li v-for="(value, key) in venda.endereco" :key="key">
@@ -44,7 +44,7 @@ export default {
   methods: {
     getVendas() {
       api
-        .get(`/transacao?vendedor_id=${this.usuario.id}`)
+        .get(`/transacao?tipo=vendedor_id`)
         .then((resp) => (this.vendas = resp.data));
     },
   },

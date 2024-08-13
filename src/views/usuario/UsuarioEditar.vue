@@ -1,7 +1,7 @@
 <template>
   <section>
     <UsuarioForm>
-      <button class="btn" @click.prevent="atualizarUsuario"></button>
+      <button class="btn" @click.prevent="atualizarUsuario">Atualizar Usuário</button>
     </UsuarioForm>
   </section>
 </template>
@@ -19,7 +19,7 @@ export default {
     atualizarUsuario() {
       api
         .put(
-          `/usuario/${this.$store.state.usuario.id}`,
+          `/usuario`,
           this.$store.state.usuario
         )
         .then(() => this.$store.dispatch("getUsuario"))

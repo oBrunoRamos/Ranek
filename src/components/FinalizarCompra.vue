@@ -2,7 +2,9 @@
   <section>
     <h2>Endereço de Envio</h2>
     <UsuarioForm>
-      <button class="btn" @click.prevent="finalizarCompra">Finalizar Compra</button>
+      <button class="btn" @click.prevent="finalizarCompra">
+        Finalizar Compra
+      </button>
     </UsuarioForm>
   </section>
 </template>
@@ -17,6 +19,7 @@ export default {
   components: {
     UsuarioForm,
   },
+  props: ["produto"],
   computed: {
     ...mapState(["usuario"]),
     compra() {
@@ -37,9 +40,7 @@ export default {
   },
   methods: {
     criarTransacao() {
-      console.clear()
-      console.log('oi');
-      return api.post("/transacao", this.compra).then(() => this.$router.push({ name: "compras" }));
+      return api.post("/transacao", this.compra);
     },
     async criarUsuario() {
       try {
@@ -54,24 +55,23 @@ export default {
       }
     },
     finalizarCompra() {
-      // if (this.$store.state.login) {
+      if (this.$store.state.login) {
         this.criarTransacao();
-      // } else {
-      //   this.criarUsuario();
-      // }
+      } else {
+        this.criarUsuario();
+      }
+      this.$router.push({ name: "compras" });
     },
   },
 };
 </script>
 
 <style scoped>
-h2{
+h2 {
   margin-top: 40px;
   margin-bottom: 20px;
-
-
 }
-.btn{
+.btn {
   background: #e80;
 }
 </style>
